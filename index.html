@@ -14,6 +14,172 @@
   <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/vendors/@fortawesome/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="assets/css/live-resume.css">
+
+  <script>
+    var skill = "Java, C/C++, Python, OCaml, LangChain, LangGraph, OpenAI, Anthropic, Qwen(Alibaba), SpringBoot, Git, MySQL, VSCode, IDEA(IntelliJ), Android Studio, UnrealEngine 5";
+    function printTechSkills() { document.write(skill); }
+
+    var course = [
+      {
+        title: "Software Engineering",
+        content: "Java, C, C++, Python, Computer Systems, Software Engineering Lab"
+      },
+      {
+        title: "Computation Theory",
+        content: "Discrete Structures, Data Structures, Algorithms, Programming Languages & Compilers, Models of Computation"
+      },
+      {
+        title: "Mathematics",
+        content: "Matrix Theory, Probability & Statistics for Computer Science"
+      },
+      {
+        title: "Applications",
+        content: "Game Development, Electronic Music Techniques, Music Computation"
+      },
+      {
+        title: "Future Courses",
+        content: "Database Systems, Data Mining, Artificial Intelligence, Machine Learning, Mobile Computing Application"
+      }
+    ];
+    function printAllCourses() {
+      for (var i = 0; i < course.length; i++) {
+        document.write("<p class='time-line-item-content' style='margin-top: 8px'><span style='font-weight: bold;'>" + course[i].title + ":</span> " + course[i].content + "</p>");
+      }
+    }
+
+    var works = [
+      {
+        "time": "Jun 2024 – Aug 2024",
+        "title": "Software Developer | Intern",
+        "company": "AI Research and Development Dept., China Telecom E-surfing Vision Technology Co., Ltd., Guangzhou, China",
+        "content": [
+          "Research multi-agent frameworks/ products and write reports",
+          "Develop object recognition in video to evaluate the application capability of multi-agent frameworks/products",
+          "Maintain the code of the AI management platform and resolve user-reported issues"
+        ]
+      },
+      {
+        "time": "Jun 2023 – Aug 2023",
+        "title": "Software Developer | Intern",
+        "company": "Software Development Dept., Unicorn Technology Development Co., Ltd., Guangzhou, China",
+        "content": [
+          "Participate in the Hitachi Elevator Monitoring Center System project",
+          "Develop data interfaces for the Monitoring System and Maintenance System"
+        ]
+      },
+      {
+        "time": "Aug 2022 – Sep 2022",
+        "title": "Software Tester",
+        "company": "School of Music, University of Illinois Urbana-Champaign, Champaign IL, USA",
+        "content": [
+          "Comprehensive testing of Harmonia© software and related websites",
+          "Identify software bugs and malfunctions and report to the development team"
+        ]
+      }
+    ]
+    function printWorks() {
+      for (var i = 0; i < works.length; i++) {
+        document.write("<li class='time-line-item'>");
+        document.write("<span class='badge badge-primary'>" + works[i].time + "</span>");
+        document.write("<span class='time-line-item-title'>&nbsp;&nbsp;" + works[i].title + "</span>");
+        document.write("<p class='time-line-item-subtitle'>" + works[i].company + "</p>");
+        document.write("<ul>");
+        for (var j = 0; j < works[i].content.length; j++) {
+          document.write("<li class='time-line-item-content'>" + works[i].content[j] + "</li>");
+        }
+        document.write("</ul>");
+        document.write("</li>");
+      }
+    }
+
+    var activities = [
+      {
+        "time": "Oct 2021 – Present",
+        "title": "Leader, Plan P Music Studio",
+        "company": "An officially registered society at the University at Illinois Urbana-Champaign",
+        "content": [
+          "Coordinated projects and events",
+          "Specialized in arrangement, performance, and providing guidance to enhance the studio's music level"
+        ]
+      },
+      {
+        "time": "Aug 2021 – Present",
+        "title": "Music Arranger and Trombonist, Jasmine Field Orchestra",
+        "company": "Chinese Students and Scholars Association at the University at Illinois Urbana-Champaign",
+        "content": [
+          "Applied arrangement skills to improve individual and group performances",
+          "Participated in orchestra performances"
+        ]
+      }
+    ]
+    function printActivities() {
+      for (var i = 0; i < activities.length; i++) {
+        document.write("<h6 class='time-line-item-title'>" + activities[i].title + "</h6>");
+        document.write("<p class='time-line-item-subtitle'>" + activities[i].company + "</p>");
+        document.write("<ul>");
+        for (var j = 0; j < activities[i].content.length; j++) {
+          document.write("<li class='time-line-item-content'>" + activities[i].content[j] + "</li>");
+        }
+        document.write("</ul>");
+      }
+    }
+
+    var projects = [
+    {
+        "icon": "assets/images/multi-agent.svg",
+        "title": "Object Recognition | Python",
+        "content": [
+          "Developed a multi-agent application integrating LangChain/LangGraph and large language models (LLM)",
+          "Autonomously creates plans to retrieve video assets for specified investigation tasks",
+          "Performs object recognition tasks on video frames",
+          "Capable of autonomously evaluating object recognition quality and adjusting plans accordingly",
+        ]
+      },
+      {
+        "icon": "assets/images/light.svg",
+        "title": "AI Poet | Python",
+        "content": [
+          "Developed an AI-driven Discord chatbot",
+          "Integrated large language model (LLM) to enable the bot to understand and respond to user input in real-time",
+          "Used prompt engineering with Chinese poetry elements to offer emotional support and guidance to users",
+        ]
+      },
+      {
+        "icon": "assets/images/gameplay.svg",
+        "title": "Island Adventure | Unreal Engine 5",
+        "content": [
+          "Developed an open-world adventure game using UE5 Blueprints",
+          "Designed diverse terrains, challenging enemies, and immersive elements to elevate player experience"
+        ]
+      },
+      {
+        "icon": "assets/images/flight.svg",
+        "title": "Sky Route | C++ (Course Project)",
+        "content": [
+          "Developed an analysis program with OpenFlights.org data to pinpoint key hub airports in a country/region",
+          "Designed algorithms to calculate the betweenness centrality of each airport, utilizing Dijkstra and BFS algorithms",
+        ]
+      },
+    ];
+    function printProjects() {
+      for (var i = 0; i < projects.length; i++) {
+        document.write("<div class='media service-card col-lg-6'>");
+        document.write("<div class='service-icon'>");
+        document.write("<img src='" + projects[i].icon + "' style='height: 32px; width: 32px' alt=''>");
+        document.write("</div>");
+        document.write("<div class='media-body'>");
+        document.write("<h5 class='service-title'>" + projects[i].title + "</h5>");
+        document.write("<ul>");
+        for (var j = 0; j < projects[i].content.length; j++) {
+          document.write("<li class='service-description'>" + projects[i].content[j] + "</li>");
+        }
+        document.write("</ul>");
+        document.write("</div>");
+        document.write("</div>");
+      }
+    }
+  </script>
+
 </head>
 
 <body>
@@ -45,12 +211,9 @@
         <div class="card-body">
           <div class="widget-content">
             <h5 class="widget-title card-title">TECHNICAL SKILLS</h5>
-            <p>Java, C, C++, Python</p>
-            <p>Android, Git, MySQL</p>
-            <p>VS Code, Android Studio</p>
-            <p>IntelliJ IDEA</p>
-            <p>Jupyter Notebook</p>
-            <p>Numpy, Pandas</p>
+            <p style='word-wrap: break-word;'>
+              <script> printTechSkills(); </script>
+            </p>
           </div>
         </div>
       </div>
@@ -58,9 +221,9 @@
         <div class="card-body">
           <div class="widget-content">
             <h5 class="widget-title card-title">LANGUAGES</h5>
-            <p>English : proficient</p>
-            <p>Mandarin : native</p>
-            <p>Cantonese : native</p>
+            <p>English : Proficient</p>
+            <p>Mandarin : Native</p>
+            <p>Cantonese : Native</p>
           </div>
         </div>
       </div>
@@ -69,7 +232,7 @@
       <section class="intro-section">
         <h2 class="section-title">Hello, Jack!</h2>
         <p>I am a computer science student currently pursuing a Bachelor of Science degree at the University of Illinois
-          at Urbana-Champaign. I have skills in multi programming languages, and experience using software development
+          Urbana-Champaign. I have skills in multi programming languages, and experience using software development
           tools. As an aspiring software developer, I am seeking internship opportunities to gain experience in a
           professional setting and apply my skills to real-world projects.</p>
         <!-- <a href="https://www.linkedin.com/in/jack-hongyi-luo" class="btn btn-primary btn-hire-me">HIRE ME</a> -->
@@ -80,63 +243,20 @@
             <!-- <h6 class="section-subtitle">RESUME</h6> -->
             <h2 class="section-title">EDUCATION</h2>
             <h6 class="time-line-item-title">Bachelor of Science in Computer Science and Music</h6>
-            <p class="time-line-item-subtitle">University of Illinois at Urbana-Champaign </p>
+            <p class="time-line-item-subtitle">University of Illinois Urbana-Champaign</p>
             <p class="time-line-item-content">Sep 2021 - Expected Graduation: May 2025</p>
-            <p class="time-line-item-content"><span style="font-weight: bold;">Current GPA:</span> 3.88/4.00</p>
-            <p class="time-line-item-content"><span style="font-weight: bold;">Honors:</span> On the Dean's List every
-              semester
-            </p>
+            <p class="time-line-item-content"><span style="font-weight: bold;">Current GPA:</span> 3.86/4.00</p>
+            <p class="time-line-item-content"><span style="font-weight: bold;">Honors:</span> On the Dean's List</p>
+            <h6>&nbsp;</h6>
             <h6>&nbsp;</h6>
             <h6 class="time-line-item-title">COURSEWORK</h6>
-            <p class="time-line-item-content"><span style="font-weight: bold;">Software Engineering:</span> Java, C, C++, Python, Computer Systems, Software Engineering Lab </p>
-            <p class="time-line-item-content"><span style="font-weight: bold;">Computation Theory:</span> Discrete Structures, Data Structures, Algorithms, Programming Languages & Compilers, Models of Computation </p>
-            <p class="time-line-item-content"><span style="font-weight: bold;">Mathematics:</span> Matrix Theory, Probability & Statistics for Computer Science</p>
-            <p class="time-line-item-content"><span style="font-weight: bold;">Applications:</span> Game Development, Electronic Music Techniques, Music Computation </p>
-            <p class="time-line-item-content"><span style="font-weight: bold;">Future Courses:</span> Database Systems, Data Mining, Artificial Intelligence, Machine Learning, Mobile Computing Application, User Interface
-              Techniques</p>
+            <script> printAllCourses(); </script>
           </div>
           <div class="col-lg-6">
             <!-- <h6 class="section-subtitle">RESUME</h6> -->
             <h2 class="section-title">Work Experience</h2>
             <ul class="time-line">
-              <li class="time-line-item">
-                <span class="badge badge-primary">Jun 2023 – Aug 2023</span>
-                <h6 class="time-line-item-title">Software Development & Sound Effect Design Intern</h6>
-                <p class="time-line-item-subtitle">MREHAB Tech Co., Ltd, Guangzhou, China</p>
-                <ul>
-                  <li class="time-line-item-content">
-                    Worked for a Digital Occupational Therapy Rehabilitation system
-                  <li class="time-line-item-content">
-                    Developed statistical reports to provide data insights and improve patient outcomes
-                  </li>
-                  <li class="time-line-item-content">
-                    Produced sound effects that created an efficient experience for patients with perceptual disorders
-                </ul>
-              </li>
-              <li class="time-line-item">
-                <span class="badge badge-primary">Aug 2022 – Sep 2022</span>
-                <h6 class="time-line-item-title">Software Tester</h6>
-                <p class="time-line-item-subtitle">School of Music, UIUC, Champaign IL</p>
-                <ul>
-                  <li class="time-line-item-content">
-                    Conducted thorough testing procedures for the Harmonia© software and associated website
-                  <li class="time-line-item-content">
-                    Identified and reported software bugs and glitches to development team
-                  </li>
-                </ul>
-              </li>
-              <li class="time-line-item">
-                <span class="badge badge-primary">Jan 2019 – May 2019</span>
-                <h6 class="time-line-item-title">Volunteer</h6>
-                <p class="time-line-item-subtitle">Lad in a Battle LLC, Boston MA</p>
-                <ul>
-                  <li class="time-line-item-content">
-                    Contributed to music production by providing creative ideas and technical support
-                  <li class="time-line-item-content">
-                    Enhanced patient engagement and enjoyment through music and songs
-                  </li>
-                </ul>
-              </li>
+              <script> printWorks(); </script>
             </ul>
           </div>
         </div>
@@ -145,79 +265,13 @@
         <!-- <h6 class="section-subtitle">WHAT I DO</h6> -->
         <h2 class="section-title">PROJECT HIGHLIGHTS</h2>
         <div class="row">
-          <div class="media service-card col-lg-6">
-            <div class="service-icon">
-              <img src="assets/images/light.svg" style="height: 32px; width: 32px" alt="">
-            </div>
-            <div class="media-body">
-              <h5 class="service-title">AI Poet | Python</h5>
-              <ul>
-                <li class="service-description">Implemented an AI-powered Discord chatbot</li>
-                <li class="service-description">Integrated LLM enables the chatbot to understand and respond to user
-                  input in real time</li>
-                <li class="service-description">Used the cultural and historical elements of China's ancient poems to
-                  provide comfort and suggestions for users</li>
-              </ul>
-            </div>
-          </div>
-          <div class="media service-card col-lg-6">
-            <div class="service-icon">
-              <img src="assets/images/flight.svg" style="height: 32px; width: 32px" alt="">
-            </div>
-            <div class="media-body">
-              <h5 class="service-title">Sky Route | C++ (Course Project) </h5>
-              <ul>
-                <li class="service-description">Implemented an analysis program using data from OpenFlights.org to
-                  determine the most important airport in a country</li>
-                <li class="service-description">Designed an algorithm to calculate the betweenness centrality for each
-                  airport</li>
-                <li class="service-description">Utilized Dijkstra's and BFS algorithms</li>
-              </ul>
-            </div>
-          </div>
-          <div class="media service-card col-lg-6">
-            <div class="service-icon">
-              <img src="assets/images/phone.svg" style="height: 32px; width: 32px" alt="">
-            </div>
-            <div class="media-body">
-              <h5 class="service-title">Universal Agenda | Java, Python (Course Project)</h5>
-              <ul>
-                <li class="service-description">Implemented an Android app that integrated course announcements and
-                  assignments from multiple UIUC websites</li>
-                <li class="service-description">Developed frontend features including interactive home, assignment, and
-                  announcement pages with user management</li>
-                <li class="service-description">Utilized backend and crawler components to automate login and
-                  information</li>
-              </ul>
-            </div>
-          </div>
-          <div class="media service-card col-lg-6">
-            <div class="service-icon">
-              <img src="assets/images/restaurant.svg" style="height: 32px; width: 32px" alt="">
-            </div>
-            <div class="media-body">
-              <h5 class="service-title">Restaurants Finder</h5>
-              <ul>
-                <li class="service-description">Implemented an Android app which showcases an index of restaurants in
-                  Urbana-Champaign</li>
-                <li class="service-description">Included key features such as restaurant cuisine style and consumer
-                  interest correlation to improve user experience</li>
-              </ul>
-            </div>
-          </div>
+          <script> printProjects(); </script>
         </div>
       </section>
+
       <section class="services-section">
         <h2 class="section-title">EXTRACURRICULAR ACTIVITIES</h2>
-        <h6 class="time-line-item-title">Music Arranger, Trombonist</h6>
-        <p class="time-line-item-subtitle">Jasmine Field Orchestra, UIUC Chinese Students and Scholars Association</p>
-        <ul>
-          <li class="time-line-item-content">
-            Utilize music arranging skills to enhance individual qualities and overall performance of the band
-          <li class="time-line-item-content">
-            Participated in orchestral performances as a trombonist
-          </li>
-        </ul>
+        <script> printActivities(); </script>
       </section>
 
       <!-- <footer>All Rights Reserved 2024</footer> -->
