@@ -7611,7 +7611,7 @@ header {
 
 .content-wrapper {
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: 1920px;
   display: flex; }
   @media (max-width: 767px) {
     .content-wrapper {
@@ -7619,6 +7619,7 @@ header {
 
 aside {
   padding-right: 57px;
+  max-width: 360px;
   min-width: 240px; }
   @media (max-width: 767px) {
     aside {

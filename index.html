@@ -16,13 +16,13 @@
   <link rel="stylesheet" href="assets/css/live-resume.css">
 
   <script>
-    var skill = "Java, C/C++, Python, OCaml, LangChain, LangGraph, OpenAI, Anthropic, Qwen(Alibaba), SpringBoot, Git, MySQL, VSCode, IDEA(IntelliJ), Android Studio, UnrealEngine 5";
+    var skill = "Java, C, C++, Python, Ocaml, JavaScript, TypeScript, LangChain/LangGraph, LLM, OpenAI, Spring Boot, Git, Docker, SQL, MySQL, Redis, HTML, CSS, React, Webpack, JSON, Visual Studio Code, IntelliJ IDEA, Android Studio, Unreal Engine 5";
     function printTechSkills() { document.write(skill); }
 
     var course = [
       {
         title: "Software Engineering",
-        content: "Java, C, C++, Python, Computer Systems, Software Engineering Lab"
+        content: "Java, C, C++, Python, Computer Systems, Software Engineering Lab, Functional Programming"
       },
       {
         title: "Computation Theory",
@@ -38,7 +38,7 @@
       },
       {
         title: "Future Courses",
-        content: "Database Systems, Data Mining, Artificial Intelligence, Machine Learning, Mobile Computing Application"
+        content: "Database Systems, Data Mining, Artificial Intelligence, Machine Learning, Mobile Computing Application, User Interface"
       }
     ];
     function printAllCourses() {
@@ -49,32 +49,22 @@
 
     var works = [
       {
-        "time": "Jun 2024 – Aug 2024",
-        "title": "Software Developer | Intern",
-        "company": "AI Research and Development Dept., China Telecom See-Link Technology Co., Ltd., Guangzhou, China",
-        "content": [
-          "Conducted research on 5+ multi-agent frameworks and products, culminating in a comprehensive report",
-          "Developed object recognition capabilities for video analysis, achieving 100% accuracy in identifying key objects",
-          "Maintained and debugged AI management platform code, resolving 10+ user-reported issues"
-        ]
+        time: "Jun 2024 – Aug 2024",
+        title: "Software Developer | Intern",
+        company: "AI Research and Development Department, China Telecom See-Link Technology Co., Ltd., Guangzhou, China",
+        content: "• Researched 5+ cutting-edge open source multi-agent frameworks, creating a comprehensive report • Developed recognition capabilities for video analysis, achieving 100% accuracy in identifying key objects/events • Developed a multi-agent system and LLM based application for generating insights on store operations and security • Maintained and debugged AI management platform code, resolving 10+ user-reported issues"
       },
       {
-        "time": "Jun 2023 – Aug 2023",
-        "title": "Software Developer | Intern",
-        "company": "Software Development Dept., Unicorn Technology Development Co., Ltd., Guangzhou, China",
-        "content": [
-          "Contributed to Hitachi Elevator Monitoring System for 1 central and 3 regional centers in China",
-          "Developed 7 backend data interfaces integrating the Monitoring System with the Maintenance System"
-        ]
+        time: "Jun 2023 – Aug 2023",
+        title: "Software Developer | Intern",
+        company: "Software Development Department, Unicorn Technology Development Co., Ltd., Guangzhou, China",
+        content: "• Contributed to Hitachi Elevator Monitoring System for 1 central and 3 regional centers in China • Developed 10+ backend data interfaces integrating the Monitoring System with the Maintenance System"
       },
       {
-        "time": "Aug 2022 – Sep 2022",
-        "title": "Software Tester | Part-time",
-        "company": "School of Music, University of Illinois Urbana-Champaign, Champaign IL, USA",
-        "content": [
-          "Conducted comprehensive testing of Harmonia© software and 2 associated websites, covering 100% of features",
-          "Identified and reported 10+ bugs, collaborating with developers to verify fixes, reducing post-release issues by 15%"
-        ]
+        time: "Aug 2022 – Sep 2022",
+        title: "Software Tester | Part-time",
+        company: "School of Music, University of Illinois Urbana-Champaign, Champaign IL, USA",
+        content: "• Performed User Acceptance Testing (UAT) for Harmonia© app and 2 associated websites, covering 100% of features • Identified and reported 10+ bugs, collaborating with developers to verify fixes, reducing post-release issues by 50%"
       }
     ]
     function printWorks() {
@@ -84,83 +74,52 @@
         document.write("<span class='time-line-item-title'>&nbsp;&nbsp;" + works[i].title + "</span>");
         document.write("<p class='time-line-item-subtitle'>" + works[i].company + "</p>");
         document.write("<ul>");
-        for (var j = 0; j < works[i].content.length; j++) {
-          document.write("<li class='time-line-item-content'>" + works[i].content[j] + "</li>");
+        contents = works[i].content.split("•");
+        for (var j = 0; j < contents.length; j++) {
+          if (contents[j].trim() === "") continue;
+          document.write("<li class='time-line-item-content'>" + contents[j] + "</li>");
         }
         document.write("</ul>");
         document.write("</li>");
       }
     }
 
-    var activities = [
-      {
-        "time": "Oct 2021 – Present",
-        "title": "Leader, Plan P Music Studio",
-        "company": "An officially registered society at the University at Illinois Urbana-Champaign",
-        "content": [
-          "Demonstrated leadership by managing the university society, coordinating diverse projects and events",
-          "Applied project management skills to oversee music arrangement and performance preparation",
-          "Developed mentorship programs to enhance overall studio quality"
-        ]
-      },
-      {
-        "time": "Aug 2021 – Present",
-        "title": "Music Arranger and Trombonist, Jasmine Field Orchestra",
-        "company": "Chinese Students and Scholars Association at the University at Illinois Urbana-Champaign",
-        "content": [
-          "Created musical arrangements to enhance individual and group performances",
-          "Performed as trombonist in orchestra concerts and events",
-        ]
-      }
-    ]
-    function printActivities() {
-      for (var i = 0; i < activities.length; i++) {
-        document.write("<h6 class='time-line-item-title'>" + activities[i].title + "</h6>");
-        document.write("<p class='time-line-item-subtitle'>" + activities[i].company + "</p>");
-        document.write("<ul>");
-        for (var j = 0; j < activities[i].content.length; j++) {
-          document.write("<li class='time-line-item-content'>" + activities[i].content[j] + "</li>");
-        }
-        document.write("</ul>");
-      }
-    }
-
     var projects = [
     {
-        "icon": "assets/images/multi-agent.svg",
-        "title": "Object Recognition",
-        "content": [
-          "Developed a multi-agent application integrating LangChain, LangGraph, and large language models (LLM)",
-          "Implemented autonomous planning for video asset retrieval based on investigation tasks",
-          "Created object recognition capabilities for video frame analysis",
-          "Designed self-evaluation and adaptive planning features for recognition quality improvement"
-        ]
+        icon: "assets/images/multi-agent.svg",
+        title: "Store Insight",
+        content: "• Developed a multi-agent system analyzing pre-processed video data to monitor store operations and security • Implemented ReAct algorithm and optimized it for query-specific actions, improving performance by 50% • Enabled natural language queries, allowing users to ask any question and receive relevant store insights • Enhanced the system to generate comprehensive analysis on store performance and safety based on user queries",
+        tech: "Large Language Models · Prompt Engineering · Multi-agent · AgentScope · OpenAI · Python · Web Development · Web API · REST API · SaaS"
       },
       {
-        "icon": "assets/images/light.svg",
-        "title": "AI Poet",
-        "content": [
-          "Developed an AI-driven Discord chatbot integrated with large language models (LLM)",
-          "Implemented prompt engineering techniques using Chinese poetry elements to provide emotional support",
-          "Created real-time user interaction capabilities for understanding and responding to input"
-        ]
+        icon: "assets/images/scan.svg",
+        title: "Video Analyzer",
+        content: "• Developed a multi-agent application integrating LangChain and multimodal large language models (Multimodal LLM) • Implemented autonomous planning for video asset retrieval and analysis based on specific investigation tasks • Created objects/events recognition capabilities for video frame analysis • Designed and implemented self-evaluation and adaptive planning features for recognition quality improvement",
+        tech: "Multimodal Large Language Models · Prompt Engineering · Multi-agent · RAG · LangChain · LangGraph · OpenAI · Python"
       },
       {
-        "icon": "assets/images/gameplay.svg",
-        "title": "Island Adventure",
-        "content": [
-          "Developed an open-world adventure game using Unreal Engine 5 with Blueprints",
-          "Designed diverse terrains, AI-driven enemies, and immersive elements to elevate player experience"
-        ]
+        icon: "assets/images/light.svg",
+        title: "AI Poet",
+        content: "• Developed an AI-driven Discord chatbot integrated with large language models (LLM) • Implemented prompt engineering techniques using Chinese poetry elements to provide emotional support • Created real-time user interaction capabilities for understanding and responding to input",
+        tech: "Large Language Models · Prompt Engineering · OpenAI · Web Services · Python"
       },
       {
-        "icon": "assets/images/flight.svg",
-        "title": "Sky Route (Course Project)",
-        "content": [
-          "Developed an analysis program using OpenFlights.org data to identify key hub airports in specific regions",
-          "Implemented algorithms to calculate airport betweenness centrality, utilizing Dijkstra's and BFS algorithms",
-          "Applied software development lifecycle (SDLC) principles throughout the project"
-        ]
+        icon: "assets/images/island.svg",
+        title: "Island Adventure",
+        content: "• Developed an open-world adventure game using Unreal Engine 5 with Blueprints • Designed diverse terrains, AI-driven enemies, and immersive elements to elevate player experience",
+        tech: "Unreal Engine 5 · Game Design · Game Development · Game Programming"
+      },
+      {
+        icon: "assets/images/flight.svg",
+        title: "Sky Route (Course Project)",
+        content: "• Developed an analysis program using OpenFlights.org data to identify key hub airports in specific regions • Implemented algorithms to calculate airport betweenness centrality, utilizing Dijkstra's and BFS algorithms • Applied software development life cycle (SDLC) principles throughout the project",
+        tech: "C++ · STL · Algorithms · Data Structures · Graph Theory · Data Analytics"
+      },
+      {
+        icon: "assets/images/food.svg",
+        title: "Restaurants Finder (Course Project)",
+        content: "• Implemented an Android app which showcases an index of restaurants in Urbana-Champaign • Included key features such as restaurant cuisine style and consumer interest correlation to improve user experience",
+        tech: "Java · Android Development · Mobile App Development"
       },
     ];
     function printProjects() {
@@ -171,15 +130,47 @@
         document.write("</div>");
         document.write("<div class='media-body'>");
         document.write("<h5 class='service-title'>" + projects[i].title + "</h5>");
+        document.write("<p class='time-line-item-subtitle'>" + projects[i].tech + "</p>");
         document.write("<ul>");
-        for (var j = 0; j < projects[i].content.length; j++) {
-          document.write("<li class='service-description'>" + projects[i].content[j] + "</li>");
+        contents = projects[i].content.split("•");
+        for (var j = 0; j < contents.length; j++) {
+          if (contents[j].trim() === "") continue;
+          document.write("<li class='service-description'>" + contents[j] + "</li>");
         }
         document.write("</ul>");
         document.write("</div>");
         document.write("</div>");
       }
     }
+
+    var activities = [
+      {
+        time: "Oct 2021 – Present",
+        title: "Leader, Plan P Music Studio",
+        company: "An officially registered society at the University at Illinois Urbana-Champaign",
+        content: "• Demonstrated leadership by managing the university society, coordinating diverse projects and events • Applied project management skills to oversee music arrangement and performance preparation • Developed mentorship programs to enhance overall studio quality "
+      },
+      {
+        time: "Aug 2021 – Present",
+        title: "Music Arranger and Trombonist, Jasmine Field Orchestra",
+        company: "Chinese Students and Scholars Association at the University at Illinois Urbana-Champaign",
+        content: "• Created musical arrangements to enhance individual and group performances • Performed as trombonist in orchestra concerts and events "
+      }
+    ]
+    function printActivities() {
+      for (var i = 0; i < activities.length; i++) {
+        document.write("<h6 class='time-line-item-title'>" + activities[i].title + "</h6>");
+        document.write("<p class='time-line-item-subtitle'>" + activities[i].company + "</p>");
+        document.write("<ul>");
+        contents = activities[i].content.split("•");
+        for (var j = 0; j < contents.length; j++) {
+          if (contents[j].trim() === "") continue;
+          document.write("<li class='time-line-item-content'>" + contents[j] + "</li>");
+        }
+        document.write("</ul>");
+      }
+    }
+
   </script>
 
 </head>
