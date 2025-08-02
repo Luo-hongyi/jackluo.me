@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Portfolio Data</title>
+    <script src="assets/js/data.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="url"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .small-textarea {
+            min-height: 60px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .output-wrapper {
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #6c757d;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+        .skills-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .skills-input input {
+            flex: 1;
+        }
+        .category-section {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .repeatable-group {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            position: relative;
+        }
+        .remove-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #dc3545;
+            font-size: 12px;
+            padding: 2px 8px;
+        }
+        .add-btn {
+            background: #28a745;
+            font-size: 14px;
+            padding: 5px 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Portfolio Data</h1>
+
+    <form id="dataForm">
+        <!-- Personal Info -->
+        <div class="section">
+            <h2>Personal Information</h2>
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" id="name" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+                <label>Pronunciation:</label>
+                <input type="text" id="pronunciation" placeholder="/pro/nun/ci/a/tion/">
+            </div>
+            <div class="form-group">
+                <label>Title:</label>
+                <input type="text" id="title" placeholder="e.g., AI/ML Engineer">
+            </div>
+            <div class="form-group">
+                <label>Location:</label>
+                <input type="text" id="location" placeholder="City, Country">
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="section">
+            <h2>Contact Information</h2>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" id="contact-email" placeholder="your.email@example.com">
+            </div>
+            <div class="form-group">
+                <label>Phone:</label>
+                <input type="text" id="contact-phone" placeholder="+1 (555) 123-4567">
+            </div>
+            <div class="form-group">
+                <label>LinkedIn URL:</label>
+                <input type="url" id="contact-linkedin" placeholder="https://linkedin.com/in/username">
+            </div>
+            <div class="form-group">
+                <label>GitHub URL:</label>
+                <input type="url" id="contact-github" placeholder="https://github.com/username">
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <h2>Summary</h2>
+            <div class="form-group">
+                <textarea id="summary" placeholder="Enter your professional summary..."></textarea>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <h2>Skills</h2>
+            <div id="skillsContainer">
+                <div class="category-section">
+                    <h3>Languages</h3>
+                    <textarea id="skillsLanguages" class="small-textarea" placeholder="Enter languages, one per line"></textarea>
+                </div>
+                <div class="category-section">
+                    <h3>Frameworks</h3>
+                    <textarea id="skillsFrameworks" class="small-textarea" placeholder="Enter frameworks, one per line"></textarea>
+                </div>
+                <div class="category-section">
+                    <h3>Tools</h3>
+                    <textarea id="skillsTools" class="small-textarea" placeholder="Enter tools, one per line"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <h2>Experience</h2>
+            <div id="experienceContainer">
+                <!-- Experience entries will be added here -->
+            </div>
+            <button type="button" class="add-btn" onclick="addExperience()">+ Add Experience</button>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <h2>Education</h2>
+            <div id="educationContainer">
+                <!-- Education entries will be added here -->
+            </div>
+            <button type="button" class="add-btn" onclick="addEducation()">+ Add Education</button>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <h2>Projects</h2>
+            <div id="projectsContainer">
+                <!-- Project entries will be added here -->
+            </div>
+            <button type="button" class="add-btn" onclick="addProject()">+ Add Project</button>
+        </div>
+    </form>
+
+    <!-- Output -->
+    <div class="section">
+        <h2>Generated data.js</h2>
+        <div class="output-wrapper">
+            <textarea id="output"></textarea>
+            <button type="button" class="copy-btn" onclick="copyToClipboard()">Copy</button>
+        </div>
+        <div style="text-align: center; margin: 20px 0;">
+            <button type="button" onclick="generateDataJS()">Generate data.js from form</button>
+            <button type="button" onclick="importFromOutput()">Import from Output box</button>
+            <button type="button" onclick="clearForm()">Clear form</button>
+        </div>
+    </div>
+
+    <script>
+        // Helper to safely get values from query selectors
+        const getValue = (parent, selector) => parent.querySelector(selector)?.value || '';
+        const getTextarea = (parent, selector) => parent.querySelector(selector)?.value.split('\n').filter(s => s.trim()) || [];
+
+        // ===================================================================================
+        // SECTION: Data Generation (Form -> data.js)
+        // ===================================================================================
+        function generateDataJS() {
+            // Personal Info
+            const personalData = {
+                name: document.getElementById('name').value || '',
+                pronunciation: document.getElementById('pronunciation').value || '',
+                title: document.getElementById('title').value || '',
+                location: document.getElementById('location').value || ''
+            };
+
+            // Summary
+            const summary = document.getElementById('summary').value || '';
+
+            // Contact Info
+            const contactData = [
+                { type: "email", label: document.getElementById('contact-email').value, url: "mailto:" + document.getElementById('contact-email').value, icon: "email" },
+                { type: "phone", label: document.getElementById('contact-phone').value, url: "tel:" + document.getElementById('contact-phone').value.replace(/[^0-9+]/g, ''), icon: "phone" },
+                { type: "linkedin", label: "LinkedIn", url: document.getElementById('contact-linkedin').value, icon: "linkedin" },
+                { type: "github", label: "GitHub", url: document.getElementById('contact-github').value, icon: "github" }
+            ].filter(c => c.url && (c.type === 'linkedin' || c.type === 'github' ? c.url.startsWith('http') : c.label));
+
+            // Skills
+            const skillsData = {
+                "Programming Languages": document.getElementById('skillsLanguages').value.split('\n').filter(s => s.trim()),
+                "Frameworks & Libraries": document.getElementById('skillsFrameworks').value.split('\n').filter(s => s.trim()),
+                "Tools & Technologies": document.getElementById('skillsTools').value.split('\n').filter(s => s.trim())
+            };
+
+            // Experience
+            const experienceData = Array.from(document.querySelectorAll('#experienceContainer .repeatable-group')).map(group => {
+                const company = getValue(group, '.exp-company');
+                let id = getValue(group, '.exp-id');
+                if (!id && company) {
+                    id = company.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+                }
+                const achievementsRaw = getTextarea(group, '.exp-achievements');
+                const achievements = [];
+                achievementsRaw.forEach(line => {
+                    if (line.startsWith('  ')) {
+                        const lastAchievement = achievements[achievements.length - 1];
+                        if (typeof lastAchievement === 'string') {
+                            achievements[achievements.length - 1] = { text: lastAchievement, subItems: [line.trim()] };
+                        } else if (typeof lastAchievement === 'object' && lastAchievement !== null) {
+                            lastAchievement.subItems = lastAchievement.subItems || [];
+                            lastAchievement.subItems.push(line.trim());
+                        }
+                    } else {
+                        achievements.push(line);
+                    }
+                });
+                return { id, company, description: getValue(group, '.exp-description'), position: getValue(group, '.exp-position'), date: getValue(group, '.exp-date'), achievements };
+            });
+
+            // Education
+            const educationData = Array.from(document.querySelectorAll('#educationContainer .repeatable-group')).map(group => ({
+                school: getValue(group, '.edu-school'),
+                degree: getValue(group, '.edu-degree'),
+                description: getValue(group, '.edu-description'),
+                date: getValue(group, '.edu-date')
+            }));
+
+            // Projects
+            const projectsData = Array.from(document.querySelectorAll('#projectsContainer .repeatable-group')).map(group => {
+                const title = getValue(group, '.proj-title');
+                let id = getValue(group, '.proj-id');
+                if (!id && title) {
+                    id = title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+                }
+                return { id, title, summary: getValue(group, '.proj-summary'), githubUrl: getValue(group, '.proj-githubUrl'), techTags: getTextarea(group, '.proj-techTags'), details: getTextarea(group, '.proj-details') };
+            });
+
+            // Final Output
+            const output = `const personalData = ${JSON.stringify(personalData, null, 4)};\n\nconst summary = \`${summary.replace(/`/g, '\`')}\`;\n\nconst experienceData = ${JSON.stringify(experienceData, null, 4)};\n\nconst projectsData = ${JSON.stringify(projectsData, null, 4)};\n\nconst educationData = ${JSON.stringify(educationData, null, 4)};\n\nconst skillsData = ${JSON.stringify(skillsData, null, 4)};\n\nconst contactData = ${JSON.stringify(contactData, null, 4)};\n`;
+            document.getElementById('output').value = output;
+        }
+
+        // ===================================================================================
+        // SECTION: Data Population (data.js -> Form)
+        // ===================================================================================
+        function importFromOutput() {
+            const textInput = document.getElementById('output').value;
+            if (!textInput.trim()) {
+                alert('Please paste data.js content into the Output box first');
+                return;
+            }
+            try {
+                const getData = new Function(`${textInput}\nreturn { personalData, summary, experienceData, projectsData, educationData, skillsData, contactData };`);
+                const data = getData();
+                populateFormWithData(data);
+                alert('Data imported successfully from Output box!');
+            } catch (error) {
+                alert('Error parsing data: ' + error.message);
+                console.error('Parse error:', error);
+            }
+        }
+
+        function autosizeTextareas() {
+            const textareas = document.querySelectorAll('textarea:not(#output)');
+            textareas.forEach(textarea => {
+                setTimeout(() => {
+                    textarea.style.height = 'auto';
+                    textarea.style.height = (textarea.scrollHeight) + 'px';
+                }, 0);
+            });
+        }
+
+        function populateFormWithData(data) {
+            const { personalData, summary, experienceData, projectsData, educationData, skillsData, contactData } = data;
+            clearForm(false);
+
+            if (personalData) {
+                document.getElementById('name').value = personalData.name || '';
+                document.getElementById('pronunciation').value = personalData.pronunciation || '';
+                document.getElementById('title').value = personalData.title || '';
+                document.getElementById('location').value = personalData.location || '';
+            }
+            document.getElementById('summary').value = summary || '';
+
+            if (contactData) {
+                document.getElementById('contact-email').value = contactData.find(c => c.type === 'email')?.label || '';
+                document.getElementById('contact-phone').value = contactData.find(c => c.type === 'phone')?.label || '';
+                document.getElementById('contact-linkedin').value = contactData.find(c => c.type === 'linkedin')?.url || '';
+                document.getElementById('contact-github').value = contactData.find(c => c.type === 'github')?.url || '';
+            }
+
+            if (skillsData) {
+                document.getElementById('skillsLanguages').value = (skillsData["Programming Languages"] || []).join('\n');
+                document.getElementById('skillsFrameworks').value = (skillsData["Frameworks & Libraries"] || []).join('\n');
+                document.getElementById('skillsTools').value = (skillsData["Tools & Technologies"] || []).join('\n');
+            }
+
+            const expContainer = document.getElementById('experienceContainer');
+            expContainer.innerHTML = '';
+            if (experienceData && experienceData.length) {
+                experienceData.forEach(exp => addExperience(exp));
+            } else {
+                addExperience();
+            }
+
+            const eduContainer = document.getElementById('educationContainer');
+            eduContainer.innerHTML = '';
+            if (educationData && educationData.length) {
+                educationData.forEach(edu => addEducation(edu));
+            } else {
+                addEducation();
+            }
+
+            const projContainer = document.getElementById('projectsContainer');
+            projContainer.innerHTML = '';
+            if (projectsData && projectsData.length) {
+                projectsData.forEach(proj => addProject(proj));
+            } else {
+                addProject();
+            }
+            
+            autosizeTextareas();
+        }
+
+        function populateFormOnLoad() {
+            try {
+                const data = {
+                    personalData: typeof personalData !== 'undefined' ? personalData : {},
+                    summary: typeof summary !== 'undefined' ? summary : '',
+                    experienceData: typeof experienceData !== 'undefined' ? experienceData : [],
+                    projectsData: typeof projectsData !== 'undefined' ? projectsData : [],
+                    educationData: typeof educationData !== 'undefined' ? educationData : [],
+                    skillsData: typeof skillsData !== 'undefined' ? skillsData : {},
+                    contactData: typeof contactData !== 'undefined' ? contactData : [],
+                };
+                populateFormWithData(data);
+            } catch (error) {
+                console.error("Could not automatically populate form. This might be expected if data.js is empty or has syntax errors.", error);
+                addExperience();
+                addEducation();
+                addProject();
+            }
+        }
+
+        // ===================================================================================
+        // SECTION: Dynamic Form Element Functions (Add/Remove/Clear)
+        // ===================================================================================
+        function addExperience(data = {}) {
+            const container = document.getElementById('experienceContainer');
+            const div = document.createElement('div');
+            div.className = 'repeatable-group';
+            const achievementsText = (data.achievements || []).map(item => {
+                if (typeof item === 'object' && item !== null && item.text) {
+                    const subItems = (item.subItems || []).map(sub => `  ${sub}`).join('\n');
+                    return `${item.text}\n${subItems}`;
+                }
+                return item;
+            }).join('\n');
+            div.innerHTML = `<input type="hidden" class="exp-id" value="${data.id || ''}"><button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button><div class="form-group"><label>Company:</label><input type="text" class="exp-company" placeholder="Company name" value="${data.company || ''}"></div><div class="form-group"><label>Description:</label><input type="text" class="exp-description" placeholder="e.g., Top 15 U.S. Data Storage Startup" value="${data.description || ''}"></div><div class="form-group"><label>Role:</label><input type="text" class="exp-position" placeholder="Job title" value="${data.position || ''}"></div><div class="form-group"><label>Duration:</label><input type="text" class="exp-date" placeholder="e.g., Jan 2023 - Present" value="${data.date || ''}"></div><div class="form-group"><label>Achievements (use 2-space indent for sub-items):</label><textarea class="exp-achievements" placeholder="Each line will become a bullet point. Indent with 2 spaces for sub-bullets.">${achievementsText}</textarea></div>`;
+            container.appendChild(div);
+        }
+
+        function addEducation(data = {}) {
+            const container = document.getElementById('educationContainer');
+            const div = document.createElement('div');
+            div.className = 'repeatable-group';
+            div.innerHTML = `<button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button><div class="form-group"><label>School:</label><input type="text" class="edu-school" placeholder="School name" value="${data.school || ''}"></div><div class="form-group"><label>Degree:</label><input type="text" class="edu-degree" placeholder="e.g., Bachelor of Science" value="${data.degree || ''}"></div><div class="form-group"><label>Description:</label><input type="text" class="edu-description" placeholder="Field of study or additional details" value="${data.description || ''}"></div><div class="form-group"><label>Date:</label><input type="text" class="edu-date" placeholder="e.g., 2020-2024" value="${data.date || ''}"></div>`;
+            container.appendChild(div);
+        }
+
+        function addProject(data = {}) {
+            const container = document.getElementById('projectsContainer');
+            const div = document.createElement('div');
+            div.className = 'repeatable-group';
+            div.innerHTML = `<input type="hidden" class="proj-id" value="${data.id || ''}"><button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button><div class="form-group"><label>Project Name:</label><input type="text" class="proj-title" placeholder="Project name" value="${data.title || ''}"></div><div class="form-group"><label>Description:</label><input type="text" class="proj-summary" placeholder="Brief description" value="${data.summary || ''}"></div><div class="form-group"><label>GitHub URL:</label><input type="url" class="proj-githubUrl" placeholder="https://github.com/username/project" value="${data.githubUrl || ''}"></div><div class="form-group"><label>Tech Stack (one per line):</label><textarea class="proj-techTags" placeholder="Enter technologies used, one per line">${(data.techTags || []).join('\n')}</textarea></div><div class="form-group"><label>Details (one per line):</label><textarea class="proj-details" placeholder="Each line will become a bullet point">${(data.details || []).join('\n')}</textarea></div>`;
+            container.appendChild(div);
+        }
+
+        function clearForm(clearOutput = true) {
+            document.getElementById('dataForm').reset();
+            document.getElementById('experienceContainer').innerHTML = '';
+            document.getElementById('educationContainer').innerHTML = '';
+            document.getElementById('projectsContainer').innerHTML = '';
+            if (clearOutput) {
+                document.getElementById('output').value = '';
+            }
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('output');
+            if (!output.value) {
+                alert("Output is empty. Generate data first.");
+                return;
+            }
+            output.select();
+            document.execCommand('copy');
+            alert('Copied to clipboard!');
+        }
+
+        // ===================================================================================
+        // SECTION: Initial Load
+        // ===================================================================================
+        window.onload = () => {
+            populateFormOnLoad();
+        };
+    </script>
+</body>
+</html>
