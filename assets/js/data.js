@@ -9,6 +9,18 @@ const summary = `I am currently pursuing a Master's in Computer Science at the U
 
 const experienceData = [
     {
+        "id": "schneider-electric",
+        "company": "Schneider Electric",
+        "description": "Global Fortune 500",
+        "position": "Software Engineering Intern",
+        "date": "November 2025 – Present",
+        "achievements": [
+            "Digital Innovation & Technology Department",
+            "Develop industrial AI agents and multi-agent systems to automate workflows and solve operational challenges.",
+            "Technologies: Large Language Models (LLM) APIs, Multi-agent Systems, RAG, Fine Tuning, LangChain/LangGraph/AgentScope"
+        ]
+    },
+    {
         "id": "fog-works",
         "company": "Fog Works, Inc.",
         "description": "Top 15 U.S. Data Storage Startup of 2023",
