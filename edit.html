@@ -93,6 +93,18 @@
             border-radius: 4px;
             position: relative;
         }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-header h2 {
+            margin: 0;
+        }
+        .section-header .add-btn {
+            margin: 0;
+        }
         .remove-btn {
             position: absolute;
             top: 5px;
@@ -183,11 +195,13 @@
 
         <!-- Experience -->
         <div class="section">
-            <h2>Experience</h2>
+            <div class="section-header">
+                <h2>Experience</h2>
+                <button type="button" class="add-btn" onclick="addExperience({}, true)">+ Add Experience</button>
+            </div>
             <div id="experienceContainer">
                 <!-- Experience entries will be added here -->
             </div>
-            <button type="button" class="add-btn" onclick="addExperience()">+ Add Experience</button>
         </div>
 
         <!-- Education -->
@@ -411,7 +425,7 @@
         // ===================================================================================
         // SECTION: Dynamic Form Element Functions (Add/Remove/Clear)
         // ===================================================================================
-        function addExperience(data = {}) {
+        function addExperience(data = {}, prepend = false) {
             const container = document.getElementById('experienceContainer');
             const div = document.createElement('div');
             div.className = 'repeatable-group';
@@ -423,7 +437,13 @@
                 return item;
             }).join('\n');
             div.innerHTML = `<input type="hidden" class="exp-id" value="${data.id || ''}"><button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button><div class="form-group"><label>Company:</label><input type="text" class="exp-company" placeholder="Company name" value="${data.company || ''}"></div><div class="form-group"><label>Description:</label><input type="text" class="exp-description" placeholder="e.g., Top 15 U.S. Data Storage Startup" value="${data.description || ''}"></div><div class="form-group"><label>Role:</label><input type="text" class="exp-position" placeholder="Job title" value="${data.position || ''}"></div><div class="form-group"><label>Duration:</label><input type="text" class="exp-date" placeholder="e.g., Jan 2023 - Present" value="${data.date || ''}"></div><div class="form-group"><label>Achievements (use 2-space indent for sub-items):</label><textarea class="exp-achievements" placeholder="Each line will become a bullet point. Indent with 2 spaces for sub-bullets.">${achievementsText}</textarea></div>`;
-            container.appendChild(div);
+            if (prepend && container.firstChild) {
+                container.insertBefore(div, container.firstChild);
+            } else if (prepend) {
+                container.appendChild(div);
+            } else {
+                container.appendChild(div);
+            }
         }
 
         function addEducation(data = {}) {
