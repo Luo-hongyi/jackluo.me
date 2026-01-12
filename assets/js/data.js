@@ -208,7 +208,7 @@ const educationData = [
     {
         "school": "University of Illinois Urbana-Champaign",
         "degree": "Master of Computer Science",
-        "description": "Focusing on Artificial Intelligence and Machine Learning",
+        "description": "GPA: 4.0/4.0, Focusing on Artificial Intelligence and Machine Learning",
         "date": "August 2025 - Expected Graduation: Dec 2026"
     },
     {
@@ -222,8 +222,8 @@ const educationData = [
 const skillsData = {
     "Programming Languages": [
         "Java",
-        "C/C++",
         "Python",
+        "C/C++",
         "OCaml",
         "JavaScript",
         "TypeScript",
