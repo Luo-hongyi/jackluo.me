@@ -23,7 +23,6 @@ function renderExperience() {
                 <div class="experience-company-row">
                     <h3>${exp.company}</h3>
                     <div class="experience-company-meta">
-                        <span class="company-description">${exp.description}</span>
                         <div class="date">${exp.date}</div>
                     </div>
                 </div>
@@ -166,7 +165,15 @@ function renderPersonalInfo() {
 function renderSummary() {
     if (typeof summary === 'undefined') return;
     const summaryEl = document.getElementById('summary-content');
-    if (summaryEl) summaryEl.textContent = summary;
+    if (!summaryEl) return;
+
+    summaryEl.innerHTML = '';
+
+    summary.split(/\n\s*\n/).forEach(paragraph => {
+        const p = document.createElement('p');
+        p.textContent = paragraph.trim();
+        summaryEl.appendChild(p);
+    });
 }
 
 function initializeData() {
